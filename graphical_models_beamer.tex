@@ -8,9 +8,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{tikz}
-\usepackage{listings}
-\usepackage[shortlabels]{enumitem}
-\usepackage{enumitem}
+
 \usepackage{relsize}
 
 \beamertemplatenavigationsymbolsempty     %s tem ukazom skriješ gumbe za navigacijo
@@ -46,13 +44,73 @@
   
 
 % -------------------------------------------------------------------
-\section{Grafično modeliranje}
+\section{Motivacija}
 
-% -------------------------------------------------------------------
 \begin{frame}
-
+    \frametitle{Grafično modeliranje}
+    Grafično modeliranje se uporablja v:
+    \begin{itemize}
+        \item statistični fiziki 
+        \item genetiki 
+        \item še kej 
+    \end{itemize}
    
 \end{frame}
+
+% -------------------------------------------------------------------
+\section{Teorija Grafov}
+
+\begin{frame}
+    \frametitle{Notacija in terminologija}
+    $G(V,E)$ enostaven graf, torej nima večkratnih povezav in zank. Večinoma bodo 
+    vozlišča označena, to je bodo razdeljena v 2 skupini.
+    \begin{itemize}
+        \item Množica vozlišč ima obliko 
+        $$ V = \Delta \cup \Gamma \qquad \text{z} \qquad \Delta \cap  \Gamma = \emptyset  $$ 
+        Pravimo, da so vozlišča v $\Delta$ diskretna, v $\Gamma$ pa zvezna.  
+        \item Grafi z označenimi vozlišči so označeni grafi 
+    \end{itemize}
+\end{frame}
+% -------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Notacija in terminologija}
+    \begin{itemize}
+        \item Poln graf je graf, v katerem vsaka povezava povezuje par njegovih točk,
+        oziroma kjer so vse točke povezane vsaka z vsako.
+        \item  Če je $A \subseteq V$, $A$ inducira podgraf $G_A = (A, E_A)$,
+        kjer je $E_A = E \cap (A \times A)$ dobljen iz $G$ tako da ohranimo povezave z 
+        začetnim in končnim vozliščem v $A$.
+        \item Podmnožica je polna, če inducira poln podgraf
+        \item Polni podmnožici, ki je maksimalna oziroma se je ne da povečat, pravimo klika
+   
+    \end{itemize}
+
+\end{frame}
+% -------------------------------------------------------------------
+\begin{frame}
+    \frametitle{Notacija in terminologija}
+    \begin{itemize}
+        \item Če imamo povezavo $ \alpha \longrightarrow \beta $, pravimo, da je $\alpha$ starš od $\beta$.
+        Množica staršev vozlišča $\beta$ je označena s $pa(\beta)$.  
+        \item Množico sosedov vozlišča $\alpha$ označimo z $ne(\alpha)$
+        \item Oznaki $pa(A)$ in $ne(A)$ pa označujeta množico staršev in sosedov vozlišč v $A$,
+        katera sama niso v $A$:
+        \begin{align*}
+              pa(A) = \cup_{\alpha \in A} pa(\alpha) \setminus A \\
+              ne(A) = \cup_{\alpha \in A} pa(\alpha) \setminus A
+        \end{align*}
+        \item \emph{Meja} $bd(A)$ podmnožice vozlišč $A$ je množica vozlišč v $ V \setminus A $,
+        ki so starši ali sosedi vozliščem v $A$. Torej $ bd(A) = pa(A) \cup ne(A)$. 
+        \item \emph{Zaprtje} množice $A$ je $cl(A) = A \cup bd(A) $
+    \end{itemize}
+
+\end{frame}
+% -------------------------------------------------------------------
+
+% -------------------------------------------------------------------
+
+% -------------------------------------------------------------------
 
 
 \end{document}

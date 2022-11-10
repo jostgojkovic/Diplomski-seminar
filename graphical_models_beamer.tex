@@ -107,7 +107,31 @@
 
 \end{frame}
 % -------------------------------------------------------------------
+\begin{frame}
+    \frametitle{Notacija in terminologija}
+    \begin{itemize}
+        \item Množica $C \subseteq V $ je $ (\alpha, \beta)$-seperator, če vse poti od $\alpha$ do $\beta$ sekajo 
+        množico $C$.
+        \item $C \subseteq V $ separira $A$ od $B$, če je $ (\alpha, \beta)$-seperator za vse $\alpha \in A$
+        in $\beta \in B$
+    \end{itemize}
+    \begin{definicija}
+        Trojica $(A, B, C)$ disjunktnih podmnožic vozlišč neusmerjenega označenega garfa $G$ tvori
+        močno dekompozicijo grafa $G$, če je $V = A \cup B \cup C$ in velja naslednje:
+        \begin{enumerate}[(i)]
+            \item $C$ separira $A$ od $B$
+            \item $C$ je polna podmnožica množice $V$
+            \item $C \subseteq \Delta \lor B \subseteq \Gamma$
+        \end{enumerate}
+    \end{definicija}
+    \begin{itemize}
+        \item Če pri enakih predpostavkah veljata samo 1. in 2. pogoj, potem trojica  $(A, B, C)$
+        tvori šibko dekompozicijo.
+        \item Pravimo, da $(A, B, C)$ dekompozira $G$ v komponenti $G_{A \cup C}$ 
+        in $G_{B \cup C} $
+    \end{itemize}
 
+\end{frame}
 % -------------------------------------------------------------------
 
 % -------------------------------------------------------------------

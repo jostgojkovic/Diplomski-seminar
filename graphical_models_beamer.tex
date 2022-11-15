@@ -22,7 +22,9 @@
 
 \newtheorem{definicija}{Definicija}
 \newtheorem{izrek}{Izrek}
-
+\newtheorem{trditev}[definicija]{Trditev}
+\newtheorem{izrek_p_z}[izrek]{Izrek (Pearl in Paz)}
+\newcommand{\cond}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
 
 
 
@@ -30,7 +32,7 @@
    \subtitle{Modeliranje pogojne neodvisnosti s pomočjo grafov}
    \author{Jošt Gojkovič}
    \institute[FMF] {Fakulteta za matematiko in fiziko}
-   \date{12. 12. 2022}                                               
+   \date{\today}                                               
 
 \begin{document}
 
@@ -79,7 +81,7 @@
         \item Poln graf je graf, v katerem vsaka povezava povezuje par njegovih točk,
         oziroma kjer so vse točke povezane vsaka z vsako.
         \item  Če je $A \subseteq V$, $A$ inducira podgraf $G_A = (A, E_A)$,
-        kjer je $E_A = E \cap (A \times A)$ dobljen iz $G$ tako da ohranimo povezave z 
+        kjer je $E_A = E \cap (A \times A)$ dobljena iz $G$ tako da ohranimo povezave z 
         začetnim in končnim vozliščem v $A$.
         \item Podmnožica je polna, če inducira poln podgraf
         \item Polni podmnožici, ki je maksimalna oziroma se je ne da povečat, pravimo klika
@@ -94,7 +96,7 @@
         \item Če imamo povezavo $ \alpha \longrightarrow \beta $, pravimo, da je $\alpha$ starš od $\beta$.
         Množica staršev vozlišča $\beta$ je označena s $pa(\beta)$.  
         \item Množico sosedov vozlišča $\alpha$ označimo z $ne(\alpha)$
-        \item Oznaki $pa(A)$ in $ne(A)$ pa označujeta množico staršev in sosedov vozlišč v $A$,
+        \item Oznaki $pa(A)$ in $ne(A)$ označujeta množico staršev in sosedov vozlišč v $A$,
         katera sama niso v $A$:
         \begin{align*}
               pa(A) = \cup_{\alpha \in A} pa(\alpha) \setminus A \\
@@ -133,8 +135,70 @@
 
 \end{frame}
 % -------------------------------------------------------------------
-
+\begin{frame}
+    \frametitle{Pogojna neodvisnost}
+    \begin{definicija}
+        Slučajni spremenljivki $X$ in $Y$ sta pogojno neodvisni pri dani spremenljivki
+        $Z$  če in samo če je pri dani vrednosti $Z$ verjetnostna porazdelitev $X$ enaka
+        za vse vrednosti $Y$ in verjetnostna porazdelitev $Y$ je enaka za vse vrednosti
+        $X$. Pišemo $ X \cond Y ~|~ Z $. 
+    \end{definicija}
+    Za drisketne slučajne spremenljivke se ta pogoj prevede na: 
+    \begin{align*}
+         P(X=x, Y=y ~|~ Z=z) = P(X=x~|~Z=z) \cdot P(Y=y~|~Z=z) 
+    \end{align*}
+    V primeru zveznih slučajnih spremenljivk:
+    \begin{align*}
+        X \cond Y ~|~ Z \Longleftrightarrow  f_{XY|Z} (x,y|z) = f_{X|Z} (x|z) \cdot f_{Y|Z} (y|z) 
+    \end{align*}
+\end{frame}
 % -------------------------------------------------------------------
+\begin{frame}
+    \frametitle{Pogojna neodvisnost}
+        Relacija $ X \cond Y ~|~ Z$ ima naslednje lastnosti: \newline \newline
+        (C1) $\text{če} ~X \cond Y ~|~ Z~ \text{potem}~ Y \cond X ~|~ Z;$\newline \newline
+        (C2) $\text{če} ~X \cond Y ~|~ Z~ \text{in} ~U = h(X) ~\text{potem}~ U \cond Y ~|~ Z;$\newline \newline
+        (C3) $\text{če} ~X \cond Y ~|~ Z~ \text{in} ~U = h(X) ~\text{potem}~ X \cond Y ~|~ (Z,U);$\newline \newline
+        (C4) $\text{če} ~X \cond Y ~|~ Z~ \text{in} ~X \cond W ~|~ (Y,Z) ~\text{potem}~ X \cond (W,Y) ~|~ Z.$\newline \newline
+        V (C2) in (C3) je $h$ neka merljiva funkcija na vzorčnem prostoru od $X$.
+        Ob dodatnih predpostavkah velja še (treba vprašat) \newline \newline
+        (C5) če $ X \cond Y ~|~ Z$ in $ X \cond Z ~|~ Y$ potem $ X \cond (Y,Z)$ 
+\end{frame}
+% -------------------------------------------------------------------
+\begin{frame}
+    \frametitle{Markove lastnosti na neusmerjenih grafih}
+    Naj bo $G = (V,E)$ neusmerjen graf in naj bodo $ (X_\alpha)_{\alpha \in V} $
+    slučajne spremenljive. Pravimo, da verjetnostna mera $P$ na $\chi$ zadošča: 
+    \newline \newline
+    $(P) \quad $\emph{Pairwise Markovi lastnosti} glede na $G$ če je za 
+    vsak par nesosednjih vozlišč $(\alpha, \beta)$: 
+    $$ \alpha \cond \beta ~|~ V \setminus \{\alpha, \beta\}   $$
 
+    $(L) \quad $ \emph{Lokalni Markovi lastnosti} glede na $G$, če je za 
+    vsako vozlišče $\alpha \in V$:
+    $$ \alpha \cond V \setminus cl(\alpha) ~|~ bd(\alpha) $$ 
+
+    $(G) \quad $ \emph{Globalni Markovi lastnosti} glede na $G$, če je za 
+    vsako trojico $(A, B, S)$ disjunktnih podmnožic $V$, tako da $S$ 
+    separira $A$ od $B$ v $G$:
+    \[ A \cond B ~|~ S \] 
+
+\end{frame}
+% -------------------------------------------------------------------
+\begin{frame}
+    \begin{trditev}
+        Za vsak neusmerjen graf $G$ in vsako verjetnostno porazdelitev na $\chi$ velja:
+        $$ (G) \Longrightarrow (L) \Longrightarrow (P) $$
+    \end{trditev}
+    Ob predpostavki, da za disjunktne podmnožice $A$, $B$, $C$ in $D$ velja
+    $$(1) \quad \text{če} ~A \cond B ~|~ (C \cup D) ~\text{in}~ A \cond C ~|~ (B \cup D) ~ \text{potem} ~ A \cond (B \cup C) ~|~ D $$
+    imamo naslednji izrek:
+    \begin{izrek_p_z}
+        Če je verjetnostna porazdelitev na $\chi $ taka, da velja $(1)$ za disjunktne
+        podmnožice $A$, $B$, $C$, $D$, potem 
+        $$ (G) \Longleftrightarrow (L) \Longleftrightarrow (P)$$
+    \end{izrek_p_z}
+\end{frame}
+% -------------------------------------------------------------------
 
 \end{document}

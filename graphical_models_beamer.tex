@@ -50,11 +50,12 @@
 
 \begin{frame}
     \frametitle{Grafično modeliranje}
-    Grafično modeliranje se uporablja v:
     \begin{itemize}
-        \item statistični fiziki 
-        \item genetiki 
-        \item še kej 
+        \item Grafični model ali verjetnostni grafični model je verjetnostni model, kjer z 
+        grafi izrazimo pogojno odvisnost med slučajnimi spremenljivkami
+        \item Povezave med vozlišči predstavljajo odvistnost
+        \item Če je na primer povezava med vozliščem $A$ in $B$, to pomeni da je $A$ odvisen od $B$
+        in $B$ od $A$. 
     \end{itemize}
    
 \end{frame}
@@ -64,13 +65,15 @@
 
 \begin{frame}
     \frametitle{Notacija in terminologija}
-    $G(V,E)$ enostaven graf, torej nima večkratnih povezav in zank. Večinoma bodo 
-    vozlišča označena, to je bodo razdeljena v 2 skupini.
+    \begin{itemize}
+        \item $G(V,E)$ enostaven graf, torej nima večkratnih povezav in zank. 
+    \end{itemize}
+    Večinoma bodo vozlišča označena, torej bodo razdeljena v 2 skupini.
     \begin{itemize}
         \item Množica vozlišč ima obliko 
         $$ V = \Delta \cup \Gamma \qquad \text{z} \qquad \Delta \cap  \Gamma = \emptyset  $$ 
         Pravimo, da so vozlišča v $\Delta$ diskretna, v $\Gamma$ pa zvezna.  
-        \item Grafi z označenimi vozlišči so označeni grafi 
+        \item Grafom z označenimi vozlišči pravimo označeni grafi 
     \end{itemize}
 \end{frame}
 % -------------------------------------------------------------------
@@ -146,10 +149,11 @@
     Za drisketne slučajne spremenljivke se ta pogoj prevede na: 
     \begin{align*}
          P(X=x, Y=y ~|~ Z=z) = P(X=x~|~Z=z) \cdot P(Y=y~|~Z=z) 
-    \end{align*}
+    \end{align*} 
     V primeru zveznih slučajnih spremenljivk:
     \begin{align*}
-        X \cond Y ~|~ Z \Longleftrightarrow  f_{XY|Z} (x,y|z) = f_{X|Z} (x|z) \cdot f_{Y|Z} (y|z) 
+        X \cond Y ~|~ Z &\Longleftrightarrow  f_{XY|Z} (x,y|z) = f_{X|Z} (x|z) \cdot f_{Y|Z} (y|z)\\
+        &\Longleftrightarrow f_{XYZ} (x,y,z) f_Z(z) = f_{XZ} (x,z) \cdot f_{YZ} (y,z)
     \end{align*}
 \end{frame}
 % -------------------------------------------------------------------
@@ -166,9 +170,37 @@
 \end{frame}
 % -------------------------------------------------------------------
 \begin{frame}
+    \begin{itemize}
+        \item Zanimivo je, če si predstavljamo relacije $(C1)-(C5)$ kot čisto formalne izraze
+        v smislu, da niso nujno povezani z verjetnostjo, ampak kot lastnosti irelevance.
+        \item Pomebmen primer modela irelevance je seperacija grafov:
+    \end{itemize}
+    Označimo $A \perp B ~|~ C ~ \Longleftrightarrow ~ C ~\text{separira}~ A~ \text{od} ~B~ \text{v}~ G$ \\
+    Potem ima seperacija grafov naslednje lastnosti:\newline \newline
+    (C1) $\text{če} ~A \perp B ~|~ C~ \text{potem}~ B \perp A ~|~ C;$\newline \newline
+    (C2) $\text{če} ~A \perp B ~|~ C~ \text{in} ~U \subseteq A ~\text{potem}~ U \perp B ~|~ C;$\newline \newline
+    (C3) $\text{če} ~A \perp B ~|~ C~ \text{in} ~U \subseteq B ~\text{potem}~ A \perp B ~|~ (C \cup U);$\newline \newline
+    (C4) $\text{če} ~A \perp B ~|~ C~ \text{in} ~A \perp D ~|~ (B \cup C) ~\text{potem}~ A \perp (B \cup D) ~|~ C.$\newline \newline
+    Če so še vse množice disjunktne, velja še analogno od $C(5)$ 
+\end{frame}
+% -------------------------------------------------------------------
+\begin{frame}
+    \frametitle{Markove lastnosti na neusmerjenih grafih}
+    \begin{itemize}
+        \item Naj bo $V$ množica vozlišč grafa $G=(V,E)$
+        \item Naj bodo $(X_\alpha)_{\alpha \in V}$ slučajne spremenljivke, ki zavzemajo vrednosti
+        v verjetnostnih prostorih $(\mathcal{X}_\alpha)_{\alpha \in V}$. 
+        \item Za $A \subseteq V$ naj bo $(\mathcal{X}_A) = \times_{\alpha \in A} ~ \mathcal{X}_\alpha$ in $\mathcal{X} = \mathcal{X}_V$
+        \item označimo $X_A = (X_\alpha)_{\alpha \in A}$ 
+        \item Uporabimo kratko notacijo $A \cond B ~|~ C$ za $X_A \cond X_B ~|~ X_C$
+    \end{itemize}
+\end{frame}
+% -------------------------------------------------------------------
+
+\begin{frame}
     \frametitle{Markove lastnosti na neusmerjenih grafih}
     Naj bo $G = (V,E)$ neusmerjen graf in naj bodo $ (X_\alpha)_{\alpha \in V} $
-    slučajne spremenljive. Pravimo, da verjetnostna mera $P$ na $\chi$ zadošča: 
+    slučajne spremenljive. Pravimo, da verjetnostna mera $P$ na $\mathcal{X}$ zadošča: 
     \newline \newline
     $(P) \quad $\emph{Pairwise Markovi lastnosti} glede na $G$ če je za 
     vsak par nesosednjih vozlišč $(\alpha, \beta)$: 
@@ -187,14 +219,14 @@
 % -------------------------------------------------------------------
 \begin{frame}
     \begin{trditev}
-        Za vsak neusmerjen graf $G$ in vsako verjetnostno porazdelitev na $\chi$ velja:
+        Za vsak neusmerjen graf $G$ in vsako verjetnostno porazdelitev na $\mathcal{X}$ velja:
         $$ (G) \Longrightarrow (L) \Longrightarrow (P) $$
     \end{trditev}
     Ob predpostavki, da za disjunktne podmnožice $A$, $B$, $C$ in $D$ velja
     $$(1) \quad \text{če} ~A \cond B ~|~ (C \cup D) ~\text{in}~ A \cond C ~|~ (B \cup D) ~ \text{potem} ~ A \cond (B \cup C) ~|~ D $$
     imamo naslednji izrek:
     \begin{izrek_p_z}
-        Če je verjetnostna porazdelitev na $\chi $ taka, da velja $(1)$ za disjunktne
+        Če je verjetnostna porazdelitev na $\mathcal{X} $ taka, da velja $(1)$ za disjunktne
         podmnožice $A$, $B$, $C$, $D$, potem 
         $$ (G) \Longleftrightarrow (L) \Longleftrightarrow (P)$$
     \end{izrek_p_z}

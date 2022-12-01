@@ -152,8 +152,7 @@
     \end{align*} 
     V primeru zveznih slučajnih spremenljivk:
     \begin{align*}
-        X \cond Y ~|~ Z &\Longleftrightarrow  f_{XY|Z} (x,y|z) = f_{X|Z} (x|z) \cdot f_{Y|Z} (y|z)\\
-        &\Longleftrightarrow f_{XYZ} (x,y,z) f_Z(z) = f_{XZ} (x,z) \cdot f_{YZ} (y,z)
+        X \cond Y ~|~ Z \Longleftrightarrow  f_{XY|Z} (x,y|z) = f_{X|Z} (x|z) \cdot f_{Y|Z} (y|z)\\
     \end{align*}
 \end{frame}
 % -------------------------------------------------------------------
@@ -171,8 +170,8 @@
 % -------------------------------------------------------------------
 \begin{frame}
     \begin{itemize}
-        \item Zanimivo je, če si predstavljamo relacije $(C1)-(C5)$ kot čisto formalne izraze
-        v smislu, da niso nujno povezani z verjetnostjo, ampak kot lastnosti irelevance.
+        \item Zanimivo je, če si predstavljamo relacije $(C1)-(C5)$ kot izraze,
+        ki niso nujno povezani z verjetnostjo, ampak z irelevanco oziroma nepomembnostjo.
         \item Pomebmen primer modela irelevance je seperacija grafov:
     \end{itemize}
     Označimo $A \perp B ~|~ C ~ \Longleftrightarrow ~ C ~\text{separira}~ A~ \text{od} ~B~ \text{v}~ G$ \\
@@ -231,6 +230,70 @@
         $$ (G) \Longleftrightarrow (L) \Longleftrightarrow (P)$$
     \end{izrek_p_z}
 \end{frame}
+
+% -------------------------------------------------------------------
+\begin{frame}
+    \frametitle{Zgled (disketna porazdelitev)}
+    Naj bodo $(X,Y,Z)$ porazdeljene enako $X=Y=Z$ s $P\{X=0\} = P\{X=1\} = \frac{1}{2}. $
+    Ta porazdelitev potem ustreza parni Markovi lastnosti $(P)$.\\
+    \begin{align*}
+        
+    \begin{tikzpicture}
+        \node[shape=circle,draw=black] (X) at (3,0) {X};
+        \node[shape=circle,draw=black] (Y) at (5,0) {Y};
+        \node[shape=circle,draw=black] (Z) at (7,0) {Z};
+        \path [-] (Y) edge node[left] {} (Z);
+    \end{tikzpicture}
+    \end{align*}
+\end{frame}
+% -------------------------------------------------------------------
+\begin{frame}
+    \frametitle{Zgled (normalna porazdelitev)}
+    Naj bo $Y = (Y_1, Y_2, Y_3)^T$, $Y \sim \mathcal{N} (0,\Sigma)$ s kovariančna matriko
+    \begin{equation*}
+    \Sigma =
+    \begin{pmatrix}
+        1 & \frac{1}{\sqrt{n}} & \frac{1}{2}\\
+        \frac{1}{\sqrt{n}} & \frac{2}{n} &\frac{1}{\sqrt{n}}\\
+        \frac{1}{2} & \frac{1}{\sqrt{n}} & 1
+    \end{pmatrix}	
+\end{equation*}
+
+Izkaže se, da je pogojna porazdelitev od $(Y_1, Y_3)^T$ pri danem $Y_2$ dvorazsežna normalna
+s kovariančno matriko
+
+\begin{equation*}
+    \Sigma_{13|2} = 
+    \begin{pmatrix}
+        1 &  \frac{1}{2}\\
+        \frac{1}{2} &  1
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+        \frac{1}{\sqrt{n}}\\
+        \frac{1}{\sqrt{n}}
+    \end{pmatrix}
+    (\frac{n}{2}) \cdot (\frac{1}{\sqrt{n}}, \frac{1}{\sqrt{n}}) = 
+    \begin{pmatrix}
+        \frac{1}{2} &  0\\
+        0 &  \frac{1}{2}
+    \end{pmatrix}
+\end{equation*}
+in zato $Y_1 ~ \cond ~ Y_3 ~|~ Y_2$, kar pomeni, da $Y$ zadošča globalni Markovi lastnosti na grafu:
+\begin{align*}
+    
+\begin{tikzpicture}
+    \node[shape=circle,draw=black] (X) at (7,0) {1};
+    \node[shape=circle,draw=black] (Y) at (9,0) {2};
+    \node[shape=circle,draw=black] (Z) at (11,0) {3};
+    \path [-] (Y) edge node[left] {} (Z);
+    \path [-] (X) edge node[left] {} (Y);
+\end{tikzpicture}
+\end{align*}
+
+
+\end{frame}
+
 % -------------------------------------------------------------------
 
 \end{document}

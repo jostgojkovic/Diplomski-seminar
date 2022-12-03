@@ -164,13 +164,12 @@
         (C3) $\text{če} ~X \cond Y ~|~ Z~ \text{in} ~U = h(X) ~\text{potem}~ X \cond Y ~|~ (Z,U);$\newline \newline
         (C4) $\text{če} ~X \cond Y ~|~ Z~ \text{in} ~X \cond W ~|~ (Y,Z) ~\text{potem}~ X \cond (W,Y) ~|~ Z.$\newline \newline
         V (C2) in (C3) je $h$ neka merljiva funkcija na vzorčnem prostoru od $X$.
-        Ob dodatnih predpostavkah velja še (treba vprašat) \newline \newline
-        (C5) če $ X \cond Y ~|~ Z$ in $ X \cond Z ~|~ Y$ potem $ X \cond (Y,Z)$ 
+
 \end{frame}
 % -------------------------------------------------------------------
 \begin{frame}
     \begin{itemize}
-        \item Zanimivo je, če si predstavljamo relacije $(C1)-(C5)$ kot izraze,
+        \item Zanimivo je, če si predstavljamo relacije $(C1)-(C4)$ kot izraze,
         ki niso nujno povezani z verjetnostjo, ampak z irelevanco oziroma nepomembnostjo.
         \item Pomebmen primer modela irelevance je seperacija grafov:
     \end{itemize}
@@ -180,7 +179,7 @@
     (C2) $\text{če} ~A \perp B ~|~ C~ \text{in} ~U \subseteq A ~\text{potem}~ U \perp B ~|~ C;$\newline \newline
     (C3) $\text{če} ~A \perp B ~|~ C~ \text{in} ~U \subseteq B ~\text{potem}~ A \perp B ~|~ (C \cup U);$\newline \newline
     (C4) $\text{če} ~A \perp B ~|~ C~ \text{in} ~A \perp D ~|~ (B \cup C) ~\text{potem}~ A \perp (B \cup D) ~|~ C.$\newline \newline
-    Če so še vse množice disjunktne, velja še analogno od $C(5)$ 
+
 \end{frame}
 % -------------------------------------------------------------------
 \begin{frame}
@@ -201,7 +200,7 @@
     Naj bo $G = (V,E)$ neusmerjen graf in naj bodo $ (X_\alpha)_{\alpha \in V} $
     slučajne spremenljive. Pravimo, da verjetnostna mera $P$ na $\mathcal{X}$ zadošča: 
     \newline \newline
-    $(P) \quad $\emph{Pairwise Markovi lastnosti} glede na $G$ če je za 
+    $(P) \quad $\emph{Paroma Markovi lastnosti} glede na $G$, če je za 
     vsak par nesosednjih vozlišč $(\alpha, \beta)$: 
     $$ \alpha \cond \beta ~|~ V \setminus \{\alpha, \beta\}   $$
 
@@ -235,7 +234,7 @@
 \begin{frame}
     \frametitle{Zgled (disketna porazdelitev)}
     Naj bodo $(X,Y,Z)$ porazdeljene enako $X=Y=Z$ s $P\{X=0\} = P\{X=1\} = \frac{1}{2}. $
-    Ta porazdelitev potem ustreza parni Markovi lastnosti $(P)$.\\
+    Ta porazdelitev potem ustreza paroma Markovi lastnosti $(P)$.\\
     \begin{align*}
         
     \begin{tikzpicture}

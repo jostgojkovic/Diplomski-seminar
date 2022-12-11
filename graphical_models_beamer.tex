@@ -83,7 +83,7 @@
     \begin{itemize}
         \item Poln graf je graf, v katerem so vse točke povezane vsaka z vsako.
         \item  Če je $A \subseteq V$, $A$ inducira podgraf $G_A = (A, E_A)$,
-        kjer je $E_A = E \cap (A \times A)$ dobljena iz $G$ tako da ohranimo povezave z 
+        kjer je $E_A = E \cap (A \times A)$ dobljena iz $G$ tako, da ohranimo povezave z 
         začetnim in končnim vozliščem v $A$.
         \item Podmnožica je polna, če inducira poln podgraf.
         \item Polni podmnožici, ki je maksimalna, oziroma se je ne da povečati, pravimo klika.
@@ -102,7 +102,7 @@
         katera sama niso v $A$:
         \begin{align*}
               pa(A) = \cup_{\alpha \in A} ~ pa(\alpha) \setminus A \\
-              ne(A) = \cup_{\alpha \in A} ~ pa(\alpha) \setminus A
+              ne(A) = \cup_{\alpha \in A} ~ ne(\alpha) \setminus A
         \end{align*}
         \item \emph{Meja} $bd(A)$ podmnožice vozlišč $A$ je množica vozlišč v $ V \setminus A $,
         ki so starši ali sosedi vozliščem v $A$. Torej $ bd(A) = pa(A) \cup ne(A)$. 
@@ -114,9 +114,9 @@
 \begin{frame}
     \frametitle{Notacija in terminologija}
     \begin{itemize}
-        \item Množica $C \subseteq V $ je $ (\alpha, \beta)$-seperator, če vse poti od $\alpha$ do $\beta$ sekajo 
+        \item Množica $C \subseteq V $ je $ (\alpha, \beta)$-separator, če vse poti od $\alpha$ do $\beta$ sekajo 
         množico $C$.
-        \item $C \subseteq V $ separira $A$ od $B$, če je $ (\alpha, \beta)$-seperator za vse $\alpha \in A$
+        \item $C \subseteq V $ separira $A$ od $B$, če je $C ~ (\alpha, \beta)$-separator za vse $\alpha \in A$
         in $\beta \in B$
     \end{itemize}
     \begin{definicija}
@@ -164,21 +164,6 @@
         (C3) $\text{če} ~X \cond Y ~|~ Z~ \text{in} ~U = h(X) ~\text{potem}~ X \cond Y ~|~ (Z,U);$\newline \newline
         (C4) $\text{če} ~X \cond Y ~|~ Z~ \text{in} ~X \cond W ~|~ (Y,Z) ~\text{potem}~ X \cond (W,Y) ~|~ Z.$\newline \newline
         V (C2) in (C3) je $h$ neka merljiva funkcija na vzorčnem prostoru od $X$.
-
-\end{frame}
-% -------------------------------------------------------------------
-\begin{frame}
-    \begin{itemize}
-        \item Zanimivo je, če si predstavljamo relacije $(C1)-(C4)$ kot izraze,
-        ki niso nujno povezani z verjetnostjo, ampak z irelevanco oziroma nepomembnostjo.
-        \item Pomemben primer modela irelevance je seperacija grafov:
-    \end{itemize}
-    Označimo $A \perp B ~|~ C ~ \Longleftrightarrow ~ C ~\text{separira}~ A~ \text{od} ~B~ \text{v}~ G$ \\
-    Potem ima seperacija grafov naslednje lastnosti:\newline \newline
-    (C1) $\text{če} ~A \perp B ~|~ C~ \text{potem}~ B \perp A ~|~ C;$\newline \newline
-    (C2) $\text{če} ~A \perp B ~|~ C~ \text{in} ~U \subseteq A ~\text{potem}~ U \perp B ~|~ C;$\newline \newline
-    (C3) $\text{če} ~A \perp B ~|~ C~ \text{in} ~U \subseteq B ~\text{potem}~ A \perp B ~|~ (C \cup U);$\newline \newline
-    (C4) $\text{če} ~A \perp B ~|~ C~ \text{in} ~A \perp D ~|~ (B \cup C) ~\text{potem}~ A \perp (B \cup D) ~|~ C.$\newline \newline
 
 \end{frame}
 % -------------------------------------------------------------------

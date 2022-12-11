@@ -32,7 +32,7 @@
    \subtitle{Modeliranje pogojne neodvisnosti s pomočjo grafov}
    \author{Jošt Gojkovič}
    \institute[FMF] {Fakulteta za matematiko in fiziko}
-   \date{\today}                                               
+   \date{12. december 2022}                                               
 
 \begin{document}
 
@@ -67,7 +67,7 @@
     \frametitle{Notacija in terminologija}
     \begin{itemize}
         \item $G(V,E)$ enostaven graf, torej nima večkratnih povezav in zank. 
-    \end{itemize}
+    \end{itemize} 
     Večinoma bodo vozlišča označena, torej bodo razdeljena v 2 skupini.
     \begin{itemize}
         \item Množica vozlišč ima obliko 
@@ -81,13 +81,12 @@
 \begin{frame}
     \frametitle{Notacija in terminologija}
     \begin{itemize}
-        \item Poln graf je graf, v katerem vsaka povezava povezuje par njegovih točk,
-        oziroma kjer so vse točke povezane vsaka z vsako.
+        \item Poln graf je graf, v katerem so vse točke povezane vsaka z vsako.
         \item  Če je $A \subseteq V$, $A$ inducira podgraf $G_A = (A, E_A)$,
         kjer je $E_A = E \cap (A \times A)$ dobljena iz $G$ tako da ohranimo povezave z 
         začetnim in končnim vozliščem v $A$.
-        \item Podmnožica je polna, če inducira poln podgraf
-        \item Polni podmnožici, ki je maksimalna oziroma se je ne da povečat, pravimo klika
+        \item Podmnožica je polna, če inducira poln podgraf.
+        \item Polni podmnožici, ki je maksimalna, oziroma se je ne da povečati, pravimo klika.
    
     \end{itemize}
 
@@ -102,8 +101,8 @@
         \item Oznaki $pa(A)$ in $ne(A)$ označujeta množico staršev in sosedov vozlišč v $A$,
         katera sama niso v $A$:
         \begin{align*}
-              pa(A) = \cup_{\alpha \in A} pa(\alpha) \setminus A \\
-              ne(A) = \cup_{\alpha \in A} pa(\alpha) \setminus A
+              pa(A) = \cup_{\alpha \in A} ~ pa(\alpha) \setminus A \\
+              ne(A) = \cup_{\alpha \in A} ~ pa(\alpha) \setminus A
         \end{align*}
         \item \emph{Meja} $bd(A)$ podmnožice vozlišč $A$ je množica vozlišč v $ V \setminus A $,
         ki so starši ali sosedi vozliščem v $A$. Torej $ bd(A) = pa(A) \cup ne(A)$. 
@@ -126,7 +125,7 @@
         \begin{enumerate}[(i)]
             \item $C$ separira $A$ od $B$
             \item $C$ je polna podmnožica množice $V$
-            \item $C \subseteq \Delta \lor B \subseteq \Gamma$
+            \item $C \subseteq \Delta ~ \text{ali} ~ B \subseteq \Gamma$
         \end{enumerate}
     \end{definicija}
     \begin{itemize}
@@ -152,8 +151,9 @@
     \end{align*} 
     V primeru zveznih slučajnih spremenljivk:
     \begin{align*}
-        X \cond Y ~|~ Z \Longleftrightarrow  f_{XY|Z} (x,y|z) = f_{X|Z} (x|z) \cdot f_{Y|Z} (y|z)\\
+        X \cond Y ~|~ Z \Longleftrightarrow  f_{XY|Z} (x,y|z) = f_{X|Z} (x|z) \cdot f_{Y|Z} (y|z),
     \end{align*}
+    kjer je $f$ gostota.
 \end{frame}
 % -------------------------------------------------------------------
 \begin{frame}
@@ -171,7 +171,7 @@
     \begin{itemize}
         \item Zanimivo je, če si predstavljamo relacije $(C1)-(C4)$ kot izraze,
         ki niso nujno povezani z verjetnostjo, ampak z irelevanco oziroma nepomembnostjo.
-        \item Pomebmen primer modela irelevance je seperacija grafov:
+        \item Pomemben primer modela irelevance je seperacija grafov:
     \end{itemize}
     Označimo $A \perp B ~|~ C ~ \Longleftrightarrow ~ C ~\text{separira}~ A~ \text{od} ~B~ \text{v}~ G$ \\
     Potem ima seperacija grafov naslednje lastnosti:\newline \newline
@@ -235,7 +235,7 @@
     \frametitle{Zgled (disketna porazdelitev)}
     Naj bodo $(X,Y,Z)$ porazdeljene enako $X=Y=Z$ s $P\{X=0\} = P\{X=1\} = \frac{1}{2}. $
     Ta porazdelitev potem ustreza paroma Markovi lastnosti $(P)$.\\
-    \begin{align*}
+    \begin{center}
         
     \begin{tikzpicture}
         \node[shape=circle,draw=black] (X) at (3,0) {X};
@@ -243,7 +243,8 @@
         \node[shape=circle,draw=black] (Z) at (7,0) {Z};
         \path [-] (Y) edge node[left] {} (Z);
     \end{tikzpicture}
-    \end{align*}
+
+\end{center}
 \end{frame}
 % -------------------------------------------------------------------
 \begin{frame}
@@ -279,7 +280,7 @@ s kovariančno matriko
     \end{pmatrix}
 \end{equation*}
 in zato $Y_1 ~ \cond ~ Y_3 ~|~ Y_2$, kar pomeni, da $Y$ zadošča globalni Markovi lastnosti na grafu:
-\begin{align*}
+\begin{center}
     
 \begin{tikzpicture}
     \node[shape=circle,draw=black] (X) at (7,0) {1};
@@ -288,11 +289,20 @@ in zato $Y_1 ~ \cond ~ Y_3 ~|~ Y_2$, kar pomeni, da $Y$ zadošča globalni Marko
     \path [-] (Y) edge node[left] {} (Z);
     \path [-] (X) edge node[left] {} (Y);
 \end{tikzpicture}
-\end{align*}
+\end{center}
 
 
 \end{frame}
 
 % -------------------------------------------------------------------
+\begin{frame}
+\frametitle{Načrt za nadaljnje delo}
+    \begin{itemize}
+        \item faktorizacija verjetnostne mere $P$ pri neusmerjenih grafih
+        \item Markove lastnostni na usmerjenih acikličnih grafih
+        \item Markove lastnosti na verižnih grafih
+    \end{itemize}
+\end{frame}
+
 
 \end{document}
